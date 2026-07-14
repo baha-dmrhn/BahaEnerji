@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: baha-enerji-api
+    runtime: python
+    plan: free
+    buildCommand: python -m py_compile app.py
+    startCommand: python app.py
+    healthCheckPath: /healthz
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PRODUCTION
+        value: "1"
+      - key: ALLOWED_ORIGINS
+        value: https://localhost
